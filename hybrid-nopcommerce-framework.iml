@@ -19,5 +19,6 @@
     <orderEntry type="library" name="selenium-firefox-driver-4.10.0-sources" level="project" />
     <orderEntry type="library" name="selenium-server-4.23.0" level="project" />
     <orderEntry type="library" name="testng-7.9.0" level="project" />
+    <orderEntry type="library" name="webdriver-manager" level="project" />
   </component>
 </module>
