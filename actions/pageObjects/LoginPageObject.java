@@ -20,8 +20,9 @@ public class LoginPageObject extends BasePage {
         senkeysToElement(driver, LoginPageUI.PASSWORD_TEXTBOX, password);
     }
 
-    public void clickToLoginButton() {
+    public HomePageObject clickLoginToSystem() {
         waitForElementClickable(driver,LoginPageUI.LOGIN_BUTTON);
         clickToElement(driver,LoginPageUI.LOGIN_BUTTON);
+        return PageGenerator.getHomePage(driver);
     }
 }

@@ -58,9 +58,10 @@ public class RegisterPageObject extends BasePage {
         return getElementText(driver, RegisterPageUI.REGISTER_SUCCESS_MESSAGE);
     }
 
-    public void clickToLoginButton() {
+    public LoginPageObject clickToLoginButton() {
         waitForElementClickable(driver, HomePageUI.LOGIN_LINK);
         clickToElement(driver, HomePageUI.LOGIN_LINK);
+        return PageGenerator.getLoginPage(driver);
     }
     public void clickToLogoutButton(){
         waitForElementClickable(driver, HomePageUI.LOGOUT_LINK);

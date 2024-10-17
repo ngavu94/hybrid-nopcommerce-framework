@@ -6,6 +6,8 @@ import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pageObjects.*;
+import pageUIs.*;
 
 import javax.swing.*;
 import java.time.Duration;
@@ -292,6 +294,39 @@ public class BasePage {
     }
     public void waitForElementClickable(WebDriver driver, String locator){
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(getByXpath(locator)));
+    }
+
+    public RewardPointPageObject openRewardPointPage(WebDriver driver) {
+        //wait
+        waitForElementClickable(driver, BasePageUI.REWARD_POINT_LINK);
+        //click
+        clickToElement(driver, BasePageUI.REWARD_POINT_LINK);
+        return PageGenerator.getRewardPointPage(driver);
+    }
+
+    public CustomerInfoPageObject openCustomerInfoPage(WebDriver driver) {
+        //wait
+        waitForElementClickable(driver,BasePageUI.CUSTOMER_INFO_LINK);
+        //click
+        clickToElement(driver,BasePageUI.CUSTOMER_INFO_LINK);
+        return PageGenerator.getCustomerInfoPage(driver);
+    }
+
+    public AddressPageObject openAddressPage(WebDriver driver) {
+        //wait
+        waitForElementClickable(driver, BasePageUI.ADDRESS_LINK);
+        //click
+        clickToElement(driver, BasePageUI.ADDRESS_LINK);
+        return PageGenerator.getAddressPage(driver);
+    }
+
+
+    public OrderPageObject openOrderPage(WebDriver driver) {
+        //wait
+        waitForElementClickable(driver, BasePageUI.ORDER_LINK);
+        //click
+        clickToElement(driver, BasePageUI.ORDER_LINK);
+        return PageGenerator.getOrderPage(driver);
     }
 
 

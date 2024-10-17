@@ -75,7 +75,7 @@ public class Level_04_Multiple_Browser extends BaseTest {
         loginPage = new LoginPageObject(driver);
         loginPage.enterToEmailTextbox(email);
         loginPage.enterToPasswordTextbox(password);
-        loginPage.clickToLoginButton();
+        loginPage.clickLoginToSystem();
 
         //Từ loginPage qua homePage
         //Page đó đc sinh ra và làm các action

@@ -5,21 +5,21 @@
         <parameter name="browser" value="firefox"></parameter>
         <classes>
 <!--            <class name="com.nopcommerce.user.Level_02_BasePage_I_Init"/>-->
-            <class name="com.nopcommerce.user.Level_04_Multiple_Browser"/>
+            <class name="com.nopcommerce.user.Level_06_Page_Generator_04_demo"/>
         </classes>
     </test> <!-- Test -->
-    <test name="Run on Chrome Browser">
-        <parameter name="browser" value="chrome"></parameter>
-        <classes>
-            <!--            <class name="com.nopcommerce.user.Level_02_BasePage_I_Init"/>-->
-            <class name="com.nopcommerce.user.Level_04_Multiple_Browser"/>
-        </classes>
-    </test> <!-- Test -->
-    <test name="Run on Edge Browser">
-        <parameter name="browser" value="edge"></parameter>
-        <classes>
-            <!--            <class name="com.nopcommerce.user.Level_02_BasePage_I_Init"/>-->
-            <class name="com.nopcommerce.user.Level_04_Multiple_Browser"/>
-        </classes>
-    </test> <!-- Test -->
+<!--    <test name="Run on Chrome Browser">-->
+<!--        <parameter name="browser" value="chrome"></parameter>-->
+<!--        <classes>-->
+<!--            &lt;!&ndash;            <class name="com.nopcommerce.user.Level_02_BasePage_I_Init"/>&ndash;&gt;-->
+<!--            <class name="com.nopcommerce.user.Level_06_Page_Generator_02"/>-->
+<!--        </classes>-->
+<!--    </test> &lt;!&ndash; Test &ndash;&gt;-->
+<!--    <test name="Run on Edge Browser">-->
+<!--        <parameter name="browser" value="edge"></parameter>-->
+<!--        <classes>-->
+<!--            &lt;!&ndash;            <class name="com.nopcommerce.user.Level_02_BasePage_I_Init"/>&ndash;&gt;-->
+<!--            <class name="com.nopcommerce.user.Level_06_Page_Generator_02"/>-->
+<!--        </classes>-->
+<!--    </test> &lt;!&ndash; Test &ndash;&gt;-->
 </suite> <!-- Suite -->

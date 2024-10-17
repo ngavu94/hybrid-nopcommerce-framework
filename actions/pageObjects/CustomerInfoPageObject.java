@@ -52,4 +52,12 @@ public class CustomerInfoPageObject extends BasePage {
     public String getCompanyNameTextboxValue() {
         return getElementAttribute(driver, CustomerInfoPageUI.COMPANY_NAME_TEXTBOX,"value");
     }
+
+//    public AddressPageObject openAddressPage() {
+//    //wait
+//        waitForElementClickable(driver, CustomerInfoPageUI.ADDRESS_LINK);
+//        //click
+//        clickToElement(driver, CustomerInfoPageUI.ADDRESS_LINK);
+//        return PageGenerator.getAddressPage(driver);
+//    }
 }
