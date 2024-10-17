@@ -6,10 +6,11 @@ import pageUIs.HomePageUI;
 import pageUIs.RegisterPageUI;
 import pageUIs.RewardPageUI;
 
-public class RewardPointPageObject extends BasePage {
-    private WebDriver driver;
+public class RewardPointPageObject extends SidebarPageObject {
+     WebDriver driver;
 
     public RewardPointPageObject(WebDriver driver){
+        super(driver);
         this.driver = driver;
     }
 

@@ -94,22 +94,22 @@ public class Level_07_Switch_Page_Object extends BaseTest {
     @Test
     public void User_04_Switch_Page(){
         //Customer Infor -> Address
-        addressPage= customerPage.openAddressPage(driver);
+        addressPage= customerPage.openAddressPage();
         //Add new address
 
         //Address -> Reward Point
-        rewardPointPage = addressPage.openRewardPointPage(driver);
+        rewardPointPage = addressPage.openRewardPointPage();
         //...
 
         //RewardPoint -> Order
-        orderPage= rewardPointPage.openOrderPage(driver);
+        orderPage= rewardPointPage.openOrderPage();
 
 
         //Order -> Address
-        addressPage = orderPage.openAddressPage(driver);
+        addressPage = orderPage.openAddressPage();
 
         //Address -> Customer Infor
-        customerPage= addressPage.openCustomerInfoPage(driver);
+        customerPage= addressPage.openCustomerInfoPage();
     }
 
     //Post-condition
