@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="NopCommerce Automation Testing">
+    <parameter name="userUrl" value="http://localhost/"></parameter>
+    <parameter name="adminUrl" value="https://admin-demo.nopcommerce.com/admin/"></parameter>
     <test name="Run on Firefox Browser">
         <parameter name="browser" value="firefox"></parameter>
         <classes>

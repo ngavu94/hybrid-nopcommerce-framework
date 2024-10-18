@@ -9,17 +9,18 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObjects.*;
+import pageObjects.users.*;
 
 public class Level_06_Page_Generator_04_demo extends BaseTest {
     private static final Logger log = LoggerFactory.getLogger(Level_06_Page_Generator_04_demo.class);
     WebDriver driver;
-    private HomePageObject homePage;
-    private RegisterPageObject registerPage;
-    private LoginPageObject loginPage;
-    private CustomerInfoPageObject customerPage;
-    private AddressPageObject addressPage;
-    private OrderPageObject orderPage;
-    private RewardPointPageObject rewardPointPage;
+    private UserHomePO homePage;
+    private UserRegisterPO registerPage;
+    private UserLoginPO loginPage;
+    private UserCustomerInfoPO customerPage;
+    private UserAddressPO addressPage;
+    private UserOrderPO orderPage;
+    private UserRewardPointPO rewardPointPage;
 
     String firstName, lastName, email, companyName, password;
 
@@ -28,7 +29,7 @@ public class Level_06_Page_Generator_04_demo extends BaseTest {
     public void beforClass(String browser) {
         driver = getBrowserDriver(browser);
         System.out.println("driver: " + driver);
-        homePage = PageGenerator.getHomePage(driver);
+        homePage = PageGenerator.getUserHomePage(driver);
         firstName = "Nga";
         lastName = "Vu";
         email = firstName + lastName + generateNumber() + "@gmail.com";

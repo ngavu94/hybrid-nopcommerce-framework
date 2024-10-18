@@ -8,19 +8,19 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import pageObjects.CustomerInfoPageObject;
-import pageObjects.HomePageObject;
-import pageObjects.LoginPageObject;
-import pageObjects.RegisterPageObject;
+import pageObjects.users.UserCustomerInfoPO;
+import pageObjects.users.UserHomePO;
+import pageObjects.users.UserLoginPO;
+import pageObjects.users.UserRegisterPO;
 
 public class Level_06_Page_Generator_02 extends BaseTest {
-    private static final Logger log = LoggerFactory.getLogger(CustomerInfoPageObject.class);
+    private static final Logger log = LoggerFactory.getLogger(UserCustomerInfoPO.class);
     //Declare variables
     private WebDriver driver;
-    private HomePageObject homePage;
-    private RegisterPageObject registerPage;
-    private LoginPageObject loginPage;
-    private CustomerInfoPageObject customerPage;
+    private UserHomePO homePage;
+    private UserRegisterPO registerPage;
+    private UserLoginPO loginPage;
+    private UserCustomerInfoPO customerPage;
 
     String firstName, lastName, day, month, year, email, companyName, password;
 
@@ -30,7 +30,7 @@ public class Level_06_Page_Generator_02 extends BaseTest {
     public void beforeClass(String browserName){
         driver = getBrowserDriver(browserName);
         //Nó được sinh ra và bắt đầu làm đc các action của page đó
-        homePage=new HomePageObject(driver);
+        homePage=new UserHomePO(driver);
         firstName = "nga";
         lastName ="vu";
         day="10";

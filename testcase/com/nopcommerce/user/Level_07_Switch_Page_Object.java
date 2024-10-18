@@ -9,18 +9,19 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObjects.*;
+import pageObjects.users.*;
 
 public class Level_07_Switch_Page_Object extends BaseTest {
-    private static final Logger log = LoggerFactory.getLogger(CustomerInfoPageObject.class);
+    private static final Logger log = LoggerFactory.getLogger(UserCustomerInfoPO.class);
     //Declare variables
     private WebDriver driver;
-    private HomePageObject homePage;
-    private RegisterPageObject registerPage;
-    private LoginPageObject loginPage;
-    private CustomerInfoPageObject customerPage;
-    private AddressPageObject addressPage;
-    private RewardPointPageObject rewardPointPage;
-    private OrderPageObject orderPage;
+    private UserHomePO homePage;
+    private UserRegisterPO registerPage;
+    private UserLoginPO loginPage;
+    private UserCustomerInfoPO customerPage;
+    private UserAddressPO addressPage;
+    private UserRewardPointPO rewardPointPage;
+    private UserOrderPO orderPage;
 
     String firstName, lastName, day, month, year, email, companyName, password;
 
@@ -30,7 +31,7 @@ public class Level_07_Switch_Page_Object extends BaseTest {
     public void beforeClass(String browserName){
         driver = getBrowserDriver(browserName);
         //Nó được sinh ra và bắt đầu làm đc các action của page đó
-        homePage = PageGenerator.getHomePage(driver);
+        homePage = PageGenerator.getUserHomePage(driver);
         firstName = "nga";
         lastName ="vu";
         day="10";

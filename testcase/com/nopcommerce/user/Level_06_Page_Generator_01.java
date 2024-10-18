@@ -8,19 +8,19 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import pageObjects.CustomerInfoPageObject;
-import pageObjects.HomePageObject;
-import pageObjects.LoginPageObject;
-import pageObjects.RegisterPageObject;
+import pageObjects.users.UserCustomerInfoPO;
+import pageObjects.users.UserHomePO;
+import pageObjects.users.UserLoginPO;
+import pageObjects.users.UserRegisterPO;
 
 public class Level_06_Page_Generator_01 extends BaseTest {
-    private static final Logger log = LoggerFactory.getLogger(CustomerInfoPageObject.class);
+    private static final Logger log = LoggerFactory.getLogger(UserCustomerInfoPO.class);
     //Declare variables
     private WebDriver driver;
-    private HomePageObject homePage;
-    private RegisterPageObject registerPage;
-    private LoginPageObject loginPage;
-    private CustomerInfoPageObject customerPage;
+    private UserHomePO homePage;
+    private UserRegisterPO registerPage;
+    private UserLoginPO loginPage;
+    private UserCustomerInfoPO customerPage;
 
     String firstName, lastName, day, month, year, email, companyName, password;
 
@@ -30,7 +30,7 @@ public class Level_06_Page_Generator_01 extends BaseTest {
     public void beforeClass(String browserName){
         driver = getBrowserDriver(browserName);
         //Nó được sinh ra và bắt đầu làm đc các action của page đó
-        homePage=new HomePageObject(driver);
+        homePage=new UserHomePO(driver);
         firstName = "nga";
         lastName ="vu";
         day="10";
@@ -50,7 +50,7 @@ public class Level_06_Page_Generator_01 extends BaseTest {
         //Từ homepage qua registerPage
         //Thể hiện trực tiếp trên Test Class
         //-> Sai nguyên tắc trong thiết kế PM/ framework - nguyên tắc đóng gói
-        registerPage = new RegisterPageObject(driver);
+        registerPage = new UserRegisterPO(driver);
         registerPage.clickToMaleRadio();
         registerPage.enterToFirstNameTextbox(firstName);
         registerPage.enterToLastNameTextbox(lastName);
@@ -69,21 +69,21 @@ public class Level_06_Page_Generator_01 extends BaseTest {
     @Test
     public void User_02_Login(){
         registerPage.clickToLoginButton();
-        loginPage = new LoginPageObject(driver);
+        loginPage = new UserLoginPO(driver);
         loginPage.enterToEmailTextbox(email);
         loginPage.enterToPasswordTextbox(password);
         loginPage.clickLoginToSystem();
 
         //Từ loginPage qua homePage
         //Page đó đc sinh ra và làm các action
-        homePage = new HomePageObject(driver);
+        homePage = new UserHomePO(driver);
         Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
 
     }
     @Test
     public void User_03_MyAccount(){
         homePage.clickToMyaccountLink();
-        customerPage = new CustomerInfoPageObject(driver);
+        customerPage = new UserCustomerInfoPO(driver);
         System.out.println("from web: " +customerPage.getFirstNameTextboxValue());
         System.out.println("from variable: " +firstName);
         Assert.assertTrue(customerPage.isGenderMaleSelected());

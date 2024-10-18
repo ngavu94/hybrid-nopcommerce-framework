@@ -1,5 +1,5 @@
-package pageUIs;
+package pageUIs.users;
 
-public class RewardPageUI {
+public class UserRewardPageUI {
     public static final String ORDER_LINK ="//div[contains(@class,'block-account-navigation')]//a[text()='Orders']";
 }
