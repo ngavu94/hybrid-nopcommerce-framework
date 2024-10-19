@@ -2,12 +2,12 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="NopCommerce Automation Testing">
     <parameter name="userUrl" value="http://localhost/"></parameter>
-    <parameter name="adminUrl" value="https://admin-demo.nopcommerce.com/admin/"></parameter>
+    <parameter name="adminUrl" value="http://localhost/admin"></parameter>
     <test name="Run on Firefox Browser">
         <parameter name="browser" value="firefox"></parameter>
         <classes>
-<!--            <class name="com.nopcommerce.user.Level_02_BasePage_I_Init"/>-->
-            <class name="com.nopcommerce.user.Level_08_Page_Navigation"/>
+            <class name="com.nopcommerce.user.Level_09_Switch_Site_Url"/>
+<!--            <class name="com.nopcommerce.user.Level_06_Page_Generator_04_demo"/>-->
         </classes>
     </test> <!-- Test -->
 <!--    <test name="Run on Chrome Browser">-->

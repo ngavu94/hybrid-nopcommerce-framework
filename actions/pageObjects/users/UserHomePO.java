@@ -10,6 +10,7 @@ public class UserHomePO extends BasePage {
     public UserHomePO(WebDriver driver){
         this.driver = driver;
     }
+
     public UserRegisterPO clickToRegisterLink() {
         waitForElementClickable(driver, UserHomePageUI.REGISTER_LINK);
         clickToElement(driver, UserHomePageUI.REGISTER_LINK);

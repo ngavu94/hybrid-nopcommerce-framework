@@ -33,7 +33,7 @@ public class BaseTest {
                 throw new RuntimeException("Browser Name is not valid");
         }
         driver.get("http://localhost/");
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.GLOBAL_TIMEOUT));
         return driver;
     }
     public WebDriver getBrowserDriver(String browserName, String url){
@@ -55,7 +55,7 @@ public class BaseTest {
                 throw new RuntimeException("Browser Name is not valid");
         }
         driver.get(url);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.GLOBAL_TIMEOUT));
         return driver;
     }
 }

@@ -24,11 +24,13 @@ public class Level_06_Page_Generator_04_demo extends BaseTest {
 
     String firstName, lastName, email, companyName, password;
 
-    @Parameters("browser")
+//    String url="http://localhost/";
+
+    @Parameters({"browser"})
     @BeforeClass()
     public void beforClass(String browser) {
         driver = getBrowserDriver(browser);
-        System.out.println("driver: " + driver);
+       // System.out.println("driver: " + driver);
         homePage = PageGenerator.getUserHomePage(driver);
         firstName = "Nga";
         lastName = "Vu";
