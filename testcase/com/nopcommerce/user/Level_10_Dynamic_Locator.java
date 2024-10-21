@@ -8,10 +8,8 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import pageObjects.PageGenerator;
-import pageObjects.admin.AdminDashboardPO;
-import pageObjects.admin.AdminLoginPO;
-import pageObjects.users.*;
+import pageObjects.nopCommerce.PageGenerator;
+import pageObjects.nopCommerce.users.*;
 
 public class Level_10_Dynamic_Locator extends BaseTest {
     private static final Logger log = LoggerFactory.getLogger(UserCustomerInfoPO.class);
@@ -99,23 +97,39 @@ public class Level_10_Dynamic_Locator extends BaseTest {
 
     @Test
     public void User_04_Dynamic_Page() {
-        //Customer Infor -> Address
-        addressPage = customerPage.openAddressPage();
-        //Add new address
+        //Customer Infor -> Address);
+        addressPage = (UserAddressPO) customerPage.openSidebarLinkByPageName("Addresses");
 
         //Address -> Reward Point
-        rewardPointPage = addressPage.openRewardPointPage();
-        //...
+        rewardPointPage= (UserRewardPointPO) addressPage.openSidebarLinkByPageName("Reward points");
 
         //RewardPoint -> Order
-        orderPage = rewardPointPage.openOrderPage();
+        orderPage= (UserOrderPO) rewardPointPage.openSidebarLinkByPageName("Orders");
 
 
         //Order -> Address
-        addressPage = orderPage.openAddressPage();
+        addressPage = (UserAddressPO) orderPage.openSidebarLinkByPageName("Addresses");
 
         //Address -> Customer Infor
-        customerPage = addressPage.openCustomerInfoPage();
+        customerPage= (UserCustomerInfoPO) addressPage.openSidebarLinkByPageName("Customer info");
+        addressPage = (UserAddressPO) customerPage.openSidebarLinkByPageName("Addresses");
+    }
+    @Test
+    public void User_05_Dynamic_Page() {
+        //Address -> Reward Point
+        addressPage.openSidebarLinkByPageName("Reward points");
+        rewardPointPage= PageGenerator.getUserRewardPointPage(driver);
+        //Reward Point -> Order
+        rewardPointPage.openSidebarLinkByPageName("Orders");
+        orderPage= PageGenerator.getUserOrderPage(driver);
+
+        //Order -> Address
+        orderPage.openSidebarLinkByPageName("Addresses");
+        addressPage = PageGenerator.getUserAddressPage(driver);
+
+        //Address -> Customer Infor
+        addressPage.openSidebarLinkByPageName("Customer info");
+        customerPage = PageGenerator.getUserCustomerInfoPage(driver);
     }
 
     //Post-condition

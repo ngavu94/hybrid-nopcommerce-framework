@@ -8,8 +8,8 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import pageObjects.*;
-import pageObjects.users.*;
+import pageObjects.nopCommerce.PageGenerator;
+import pageObjects.nopCommerce.users.*;
 
 public class Level_07_Switch_Page_Object extends BaseTest {
     private static final Logger log = LoggerFactory.getLogger(UserCustomerInfoPO.class);

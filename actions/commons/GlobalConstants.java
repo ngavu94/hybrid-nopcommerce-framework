@@ -1,5 +1,7 @@
 package commons;
 
+import java.io.File;
+
 public class GlobalConstants {
     //System Infor
     public final static String PROJECT_PATH=System.getProperty("user.dir");
@@ -24,7 +26,8 @@ public class GlobalConstants {
     public final static int GLOBAL_TIMEOUT=15;
 
     //Download/ upload file
-    public final static String UPLOAD_PATH=PROJECT_PATH+"/uploadFiles/";
+    public final static String SEPARATOR= File.separator;
+    public final static String UPLOAD_PATH=PROJECT_PATH+SEPARATOR+ "uploadFiles"+SEPARATOR;
     public final static String DOWNLOAD_PATH=PROJECT_PATH+"/downloadFiles/";
 
     //Retry case fail

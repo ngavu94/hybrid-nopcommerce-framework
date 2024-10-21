@@ -1,18 +1,20 @@
 package commons;
 
+import com.github.dockerjava.core.GoLangFileMatch;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pageObjects.*;
-import pageUIs.*;
+import pageUIs.nopCommerce.BasePageUI;
 
 import javax.swing.*;
 import java.time.Duration;
 import java.util.List;
 import java.util.Set;
+
+import static org.openqa.selenium.devtools.v85.page.Page.navigate;
 
 public class BasePage {
     public static BasePage getBasePage() {
@@ -30,6 +32,10 @@ public class BasePage {
     public boolean isElementDisplayed(WebDriver driver) {
         return driver.findElement(By.xpath("")).isDisplayed();
     }
+    public boolean isElementDisplayed(WebDriver driver, String locator, String... restParameter) {
+        return getElement(driver,castParameter(locator,restParameter)).isDisplayed();
+    }
+
 
     //BTVN: Viet các ham
 //    get(url) ->OpenPageUrl -> MỞ 1 page
@@ -124,6 +130,12 @@ public class BasePage {
     public List<WebElement> getListElements(WebDriver driver, String locator) {
         return driver.findElements(getByLocator(locator));
     }
+    public List<WebElement> getListElements(WebDriver driver, String locator, String... restParameter) {
+        return driver.findElements(getByLocator(castParameter(locator,restParameter)));
+    }
+    private String castParameter(String locator, String ...restParameter){
+        return String.format(locator, (Object[]) restParameter);
+    }
 
     //Truyền tham số loại gì, sẽ trả về locator tương ứng
     //String prefix: cc/id/class/name => By.css, By.id, By.class...
@@ -150,7 +162,7 @@ public class BasePage {
         else {
             throw new RuntimeException("Locator type is not support!!!");
         }
-        System.out.println(by);
+//        System.out.println(by);
         return by;
     }
     public By getByXpath(String locator) {
@@ -160,13 +172,26 @@ public class BasePage {
     public void clickToElement(WebDriver driver, String locator) {
         getElement(driver, locator).click();
     }
+    public void clickToElement(WebDriver driver, String locator, String... restParameter) {
+        getElement(driver, castParameter(locator, restParameter)).click();
+    }
 
     public void senkeysToElement(WebDriver driver, String locator, String textInput) {
+        //Nếu 1 element là thẻ input bị ẩn thì clear sẽ bị lỗi trên firefox
+        getElement(driver, locator).clear();
         getElement(driver, locator).sendKeys(textInput);
+    }
+    public void senkeysToElement(WebDriver driver, String locator, String textInput, String... restParameter) {
+        getElement(driver, castParameter(locator, restParameter)).clear();
+        getElement(driver, castParameter(locator, restParameter)).sendKeys(textInput);
     }
 
     public void selectItemInDropdown(WebDriver driver, String locator, String textItem) {
         new Select(getElement(driver, locator))
+                .deselectByVisibleText(textItem);
+    }
+    public void selectItemInDropdown(WebDriver driver, String locator, String textItem, String... restParameter) {
+        new Select(getElement(driver, castParameter(locator, restParameter)))
                 .deselectByVisibleText(textItem);
     }
 
@@ -202,9 +227,15 @@ public class BasePage {
     public String getElementAttribute(WebDriver driver, String locator, String attributeName) {
         return getElement(driver, locator).getAttribute(attributeName);
     }
+    public String getElementAttribute(WebDriver driver, String locator, String attributeName, String... restParameter) {
+        return getElement(driver, castParameter(locator,restParameter)).getAttribute(attributeName);
+    }
 
     public String getElementText(WebDriver driver, String locator) {
         return getElement(driver, locator).getText();
+    }
+    public String getElementText(WebDriver driver, String locator, String... restParameter) {
+        return getElement(driver, castParameter(locator, restParameter)).getText();
     }
 
     public String getElementCssValue(WebDriver driver, String locator, String propertyName) {
@@ -224,6 +255,22 @@ public class BasePage {
             getElement(driver, locator).click();
         }
     }
+    public void checkToCheckboxOrRadio(WebDriver driver, String locator, String... restParameter) {
+        if (!getElement(driver, castParameter(locator,restParameter)).isSelected()) {
+            getElement(driver, castParameter(locator,restParameter)).click();
+        }
+    }
+
+    public void unCheckToCheckbox(WebDriver driver, String locator) {
+        if (getElement(driver, locator).isSelected()) {
+            getElement(driver, locator).click();
+        }
+    }
+    public void unCheckToCheckbox(WebDriver driver, String locator, String... restParameter) {
+        if (getElement(driver, castParameter(locator,restParameter)).isSelected()) {
+            getElement(driver, castParameter(locator,restParameter)).click();
+        }
+    }
 
     public boolean isElementDisplayed(WebDriver driver, String locator) {
         return getElement(driver, locator).isDisplayed();
@@ -231,6 +278,9 @@ public class BasePage {
 
     public boolean isElementSelected(WebDriver driver, String locator) {
         return getElement(driver, locator).isSelected();
+    }
+    public boolean isElementSelected(WebDriver driver, String locator, String... restParameter) {
+        return getElement(driver, castParameter(locator, restParameter)).isSelected();
     }
 
     public boolean isElementEnabled(WebDriver driver, String locator) {
@@ -267,6 +317,9 @@ public class BasePage {
 
     public void pressKeyToElement(WebDriver driver, String locator, Keys key) {
         new Actions(driver).sendKeys(getElement(driver, locator), key).perform();
+    }
+    public void pressKeyToElement(WebDriver driver, String locator, Keys key, String... restParameter) {
+        new Actions(driver).sendKeys(getElement(driver, castParameter(locator,restParameter)), key).perform();
     }
 
     public void hightlightElement(WebDriver driver, String locator) {
@@ -323,9 +376,16 @@ public class BasePage {
     public void waitForElementVisible(WebDriver driver, String locator) {
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOfElementLocated(getByLocator(locator)));
     }
+    public void waitForElementVisible(WebDriver driver, String locator, String... restParameter) {
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOfElementLocated(getByLocator(castParameter(locator, restParameter))));
+    }
+
 
     public void waitForElementSelected(WebDriver driver, String locator) {
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeSelected(getByLocator(locator)));
+    }
+    public void waitForElementSelected(WebDriver driver, String locator, String restParameter) {
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeSelected(getByLocator(castParameter(locator, restParameter))));
     }
 
     public void waitForElementPresence(WebDriver driver, String locator) {
@@ -339,6 +399,22 @@ public class BasePage {
     public void waitForElementClickable(WebDriver driver, String locator) {
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(getByLocator(locator)));
     }
+    public void waitForElementClickable(WebDriver driver, String locator, String... restParameter) {
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(getByLocator(castParameter(locator,restParameter))));
+    }
 
 
+    public void refreshCurrentPage(WebDriver driver) {
+        driver.navigate().refresh();
+    }
+    public void uploadMultipleFiles(WebDriver driver, String... fileNames){
+        String filePath = GlobalConstants.UPLOAD_PATH;
+        String fullFileName = "";
+        for(String file: fileNames){
+            fullFileName += filePath+file+"\n";
+        }
+        fullFileName=fullFileName.trim();
+        getElement(driver, BasePageUI.UPLOAD_FILE_TYPE).sendKeys(fullFileName);
+
+    }
 }
