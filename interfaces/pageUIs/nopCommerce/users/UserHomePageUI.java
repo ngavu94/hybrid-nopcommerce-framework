@@ -7,4 +7,5 @@ public class UserHomePageUI {
     //Biến non-static bắt buộc phải khởi tạo đối tượng hoặc kế thừa ms gọi đc
     //Biến static cho phép gọi trực tiếp từ tên class
     public static final String LOGOUT_LINK = "xpath=//a[@class='ico-logout']";
+    public static String REGISTER_PAGE_TITLE;
 }

@@ -10,4 +10,5 @@ public class UserRegisterPageUI {
     public static final String PASSWORD_CONFIRMED_TEXTBOX = "id=ConfirmPassword";
     public static final String REGISTER_BUTTON="id=register-button";
     public static final String REGISTER_SUCCESS_MESSAGE="xpath=//div[@class='result']";
+    public static String REGISTER_PAGE_TITLE="xpath=//div[@class='page-title']/h1";
 }
