@@ -38,12 +38,13 @@ public class GlobalConstants {
     public final static String BROWSER_EXTENSION_PATH=PROJECT_PATH+"/browserExtensions/";
 
     //html report folder
-    public final static String REPORTING_PATH=PROJECT_PATH+"/htmlReportNG/";
-    public final static String EXTENT_PATH=PROJECT_PATH+"/htmlExtent/";
+    public final static String REPORTING_PATH=PROJECT_PATH+ SEPARATOR+"htmlReportNG"+SEPARATOR;
+    public final static String EXTENT_PATH=PROJECT_PATH+SEPARATOR+"htmlExtentReport"+SEPARATOR;
     public final static String ALLURE_PATH=PROJECT_PATH+"/htmlAllure/";
 
     //Data test environment
     public final static String DATA_TEST_PATH=PROJECT_PATH+"/dataTest/";
     public final static String ENVIRONMENT_CONFIG_PATH=PROJECT_PATH+"/environmentConfig/";
 
+    public static final String JAVA_VERSION = System.getProperty("java.version");
 }

@@ -1,9 +1,12 @@
 package commons;
 
+import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.Reporter;
 
@@ -12,6 +15,15 @@ import java.util.Random;
 
 public class BaseTest {
     private WebDriver driver;
+    protected final Logger log ;
+    public BaseTest(){
+        log = LoggerFactory.getLogger(getClass());
+
+    }
+    public WebDriver getDriver() {
+        return driver;
+    }
+
     private String projectPath=System.getProperty("user.dir");
     protected int generateNumber(){
         return new Random().nextInt(999);
@@ -66,20 +78,24 @@ public class BaseTest {
         try{
 
             Assert.assertTrue(condition);
+            log.info("---------------PASSED---------------");
         }catch (Throwable e){
             status = false;
+            log.info("---------------FAILED---------------");
             VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
             Reporter.getCurrentTestResult().setThrowable(e);
+
         }
         return status;
     }
     protected boolean verifyFalse(boolean condition){
         boolean status = true;
         try{
-
             Assert.assertFalse(condition);
+            log.info("---------------PASSED---------------");
         }catch (Throwable e){
             status = false;
+            log.info("---------------FAILED---------------");
             VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
             Reporter.getCurrentTestResult().setThrowable(e);
         }
@@ -90,12 +106,15 @@ public class BaseTest {
         try{
 
             Assert.assertEquals(actual,expected);
+            log.info("---------------PASSED---------------");
         }catch (Throwable e){
             status = false;
+            log.info("---------------FAILED---------------");
             VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
             Reporter.getCurrentTestResult().setThrowable(e);
         }
         return status;
     }
+
 
 }
