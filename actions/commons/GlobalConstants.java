@@ -16,6 +16,8 @@ public class GlobalConstants {
     public final static String DEV_ADMIN_URL="http://dev.techpanda.org/index.php/backendlogin";
     public final static String STAGING_ADMIN_URL="http://staging.techpanda.org/index.php/backendlogin";
     public final static String LIVE_ADMIN_URL="http://live.techpanda.org/index.php/backendlogin";
+    public final static String ORANGE_HRM_URL="http://localhost:90/orangehrm/orangehrm-5.7/web/index.php/auth/login";
+
 
     public final static String ADMIN_USERNAME="user01";
     public final static String ADMIN_PASSWORD="guru99com";
@@ -46,5 +48,10 @@ public class GlobalConstants {
     public final static String DATA_TEST_PATH=PROJECT_PATH+"/dataTest/";
     public final static String ENVIRONMENT_CONFIG_PATH=PROJECT_PATH+"/environmentConfig/";
 
+    //JIRA
     public static final String JAVA_VERSION = System.getProperty("java.version");
+    public static final String JIRA_SITE_URL = "https://ngavu-automationtest.atlassian.net";
+    public static final String JIRA_USERNAME = "ngavu190419@gmail.com";
+    public static final String JIRA_API_KEY = "ATATT3xFfGF0j5WWg1SCS3KBAR4MIyQpanwISw9heBxT2k3xCEikZyy_2Ue9vJBgNWkfr3QcyGF3YqrTnUzwnn_YVT0gEiEchOLq0wQ9bpiFizdYyV5eFIHHryYk6uGzvSrGt6gjYFh3DQNs-8aw6gMGJFuRAscNjls14BMHvi11gMtxteLjnPA=D0DC9285";
+    public static final String JIRA_PROJECT_KEY = "CA";
 }

@@ -1,7 +1,7 @@
 package com.nopcommerce.user;
 
-import com.aventstack.extentreports.Status;
 import commons.BaseTest;
+import jiraConfigs.JiraCreateIssue;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,11 +12,8 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObjects.nopCommerce.PageGenerator;
 import pageObjects.nopCommerce.users.*;
-import reportConfigs.ExtentManager;
 
-import java.lang.reflect.Method;
-
-public class Level_15_ExtentReport extends BaseTest {
+public class Level_17_JIRA extends BaseTest {
     private static final Logger log = LoggerFactory.getLogger(UserCustomerInfoPO.class);
     //Declare variables
     private WebDriver driver;
@@ -48,49 +45,47 @@ public class Level_15_ExtentReport extends BaseTest {
     }
 
     //Testcase
+    @JiraCreateIssue(isCreateIssue = true)
     @Test
-    public void User_01_Register(Method method) {
-        ExtentManager.startTest(method.getName(),"User_01_Register");
-
-        ExtentManager.getTest().log(Status.INFO,"User_01_Register - STEP 01: Open register page");
+    public void User_01_Register() {
+//        log.info("User_01_Register - STEP 01: Open register page");
         //ACtion 1
         registerPage = homePage.clickToRegisterLink();
         //Từ homepage qua registerPage
         //Thể hiện trực tiếp trên Test Class
         //-> Sai nguyên tắc trong thiết kế PM/ framework - nguyên tắc đóng gói
-        ExtentManager.getTest().log(Status.INFO,"User_01_Register - STEP 02: Click to radio button");
+//        log.info("User_01_Register - STEP 02: Click to radio button");
         registerPage.clickToMaleRadio();
 
-        ExtentManager.getTest().log(Status.INFO,"User_01_Register - STEP 03: Enter to Firstname textbox with value "+firstName);
+//        log.info("User_01_Register - STEP 03: Enter to Firstname textbox with value "+firstName);
         registerPage.enterToFirstNameTextbox(firstName);
 
-        ExtentManager.getTest().log(Status.INFO,"User_01_Register - STEP 04: Enter to Lastname textbox with value "+lastName);
+//        log.info("User_01_Register - STEP 04: Enter to Lastname textbox with value "+lastName);
         registerPage.enterToLastNameTextbox(lastName);
 
-        ExtentManager.getTest().log(Status.INFO,"User_01_Register - STEP 05: Enter to Email textbox with value "+email);
+//        log.info("User_01_Register - STEP 05: Enter to Email textbox with value "+email);
         registerPage.enterToEmailTextbox(email);
 
-        ExtentManager.getTest().log(Status.INFO,"User_01_Register - STEP 06: Enter to Company Name textbox with value "+companyName);
+//        log.info("User_01_Register - STEP 06: Enter to Company Name textbox with value "+companyName);
         registerPage.enterToCompanyTextbox(companyName);
 
-        ExtentManager.getTest().log(Status.INFO,"User_01_Register - STEP 07: Enter to Password textbox with value "+password);
+//        log.info("User_01_Register - STEP 07: Enter to Password textbox with value "+password);
         registerPage.enterToPasswordTextbox(password);
 
-        ExtentManager.getTest().log(Status.INFO,"User_01_Register - STEP 08: Enter to Password Confirm textbox with value "+password);
+//        log.info("User_01_Register - STEP 08: Enter to Password Confirm textbox with value "+password);
         registerPage.enterToPasswordConfirmTextbox(password);
 
-        ExtentManager.getTest().log(Status.INFO,"User_01_Register - STEP 09: Click to Register button ");
+//        log.info("User_01_Register - STEP 09: Click to Register button ");
         registerPage.clickRegisterButton();
 
-        ExtentManager.getTest().log(Status.INFO,"User_01_Register - STEP 10: Verify message success is displayed");
+//        log.info("User_01_Register - STEP 10: Verify message success is displayed");
         Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed...");
         registerPage.clickToLogoutButton();
 
     }
-
+    @JiraCreateIssue(isCreateIssue = true)
     @Test
-    public void User_02_Login(Method method) {
-        ExtentManager.startTest(method.getName(),"User_02_Login");
+    public void User_02_Login() {
         loginPage = registerPage.clickToLoginButton();
         loginPage.enterToEmailTextbox(email);
         loginPage.enterToPasswordTextbox(password);
@@ -101,13 +96,10 @@ public class Level_15_ExtentReport extends BaseTest {
         Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
 
     }
-
+    @JiraCreateIssue(isCreateIssue = true)
     @Test
-    public void User_03_MyAccount(Method method) {
-        ExtentManager.startTest(method.getName(),"User_03_MyAccount");
+    public void User_03_MyAccount() {
         customerPage = homePage.clickToMyaccountLink();
-        System.out.println("from web: " + customerPage.getFirstNameTextboxValue());
-        System.out.println("from variable: " + firstName);
         Assert.assertTrue(customerPage.isGenderMaleSelected());
         Assert.assertEquals(customerPage.getFirstNameTextboxValue(), firstName);
 
@@ -118,10 +110,9 @@ public class Level_15_ExtentReport extends BaseTest {
         Assert.assertEquals(customerPage.getEmailTextboxValue(), email);
         Assert.assertEquals(customerPage.getCompanyNameTextboxValue(), companyName);
     }
-
+    @JiraCreateIssue(isCreateIssue = true)
     @Test
-    public void User_04_Dynamic_Page(Method method) {
-        ExtentManager.startTest(method.getName(),"User_04_Dynamic_Page");
+    public void User_04_Dynamic_Page() {
         //Customer Infor -> Address);
         addressPage = (UserAddressPO) customerPage.openSidebarLinkByPageName("Addresses");
 
@@ -139,9 +130,9 @@ public class Level_15_ExtentReport extends BaseTest {
         customerPage= (UserCustomerInfoPO) addressPage.openSidebarLinkByPageName("Customer info");
         addressPage = (UserAddressPO) customerPage.openSidebarLinkByPageName("Addresses");
     }
+    @JiraCreateIssue(isCreateIssue = true)
     @Test
-    public void User_05_Dynamic_Page(Method method) {
-        ExtentManager.startTest(method.getName(),"User_05_Dynamic_Page");
+    public void User_05_Dynamic_Page() {
         //Address -> Reward Point
         addressPage.openSidebarLinkByPageName("Reward points");
         rewardPointPage= PageGenerator.getUserRewardPointPage(driver);
@@ -160,7 +151,7 @@ public class Level_15_ExtentReport extends BaseTest {
 
     //Post-condition
     @AfterClass
-     public void afterClass() {
+    public void afterClass() {
         driver.quit();
     }
 }

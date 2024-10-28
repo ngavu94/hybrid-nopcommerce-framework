@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="NopCommerce Automation Testing">
+
+    <listeners>
+        <listener class-name="commons.MethodListener"></listener>
+    </listeners>
+    <parameter name="url" value="http://localhost:90/orangehrm/orangehrm-5.7/web/index.php/auth/login"></parameter>
+    <test name="Run on Firefox Browser">
+        <parameter name="browser" value="firefox"></parameter>
+        <classes>
+            <class name="com.orangehrm.pim.PIM_01_Employee"/>
+        </classes>
+    </test> <!-- Test -->
+
+</suite> <!-- Suite -->

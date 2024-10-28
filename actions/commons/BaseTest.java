@@ -115,6 +115,8 @@ public class BaseTest {
         }
         return status;
     }
-
+    protected void closeBrowerDriver(){
+        driver.quit();
+    }
 
 }

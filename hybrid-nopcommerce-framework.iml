@@ -22,7 +22,6 @@
     <orderEntry type="library" name="webdriver-manager" level="project" />
     <orderEntry type="library" name="log4j-api-2.23.1" level="project" />
     <orderEntry type="library" name="ReportNG" level="project" />
-    <orderEntry type="library" name="extentReport4" level="project" />
     <orderEntry type="library" name="extentreports-5.1.2" level="project" />
     <orderEntry type="library" name="jira-lib" level="project" />
   </component>

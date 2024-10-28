@@ -230,6 +230,9 @@ public class BasePage {
     public String getElementAttribute(WebDriver driver, String locator, String attributeName, String... restParameter) {
         return getElement(driver, castParameter(locator,restParameter)).getAttribute(attributeName);
     }
+    public Dimension getElementSize(WebDriver driver, String locator) {
+        return getElement(driver, locator).getSize();
+    }
 
     public String getElementText(WebDriver driver, String locator) {
         return getElement(driver, locator).getText();
@@ -376,6 +379,10 @@ public class BasePage {
     public void waitForElementVisible(WebDriver driver, String locator) {
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOfElementLocated(getByLocator(locator)));
     }
+    public boolean waitForListElementVisible(WebDriver driver, String locator) {
+        return new WebDriverWait(driver, Duration.ofSeconds(30))
+                .until(ExpectedConditions.invisibilityOfAllElements(getListElements(driver,locator)));
+    }
     public void waitForElementVisible(WebDriver driver, String locator, String... restParameter) {
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOfElementLocated(getByLocator(castParameter(locator, restParameter))));
     }
@@ -415,6 +422,13 @@ public class BasePage {
         }
         fullFileName=fullFileName.trim();
         getElement(driver, BasePageUI.UPLOAD_FILE_TYPE).sendKeys(fullFileName);
+
+
+    }
+
+    //this function used for the OrangeHRM project
+    public boolean waitAllLoadingIconInvisible(WebDriver driver) {
+        return waitForListElementVisible(driver, BasePageUI.LOADING_ICONS);
 
     }
 }

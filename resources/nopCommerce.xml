@@ -4,14 +4,15 @@
 
     <listeners>
         <listener class-name="commons.MethodListener"></listener>
-        <listener class-name="reportConfigs.ExtentTestListener"></listener>
+        <listener class-name="jiraConfigs.JiraListener"></listener>
+<!--        <listener class-name="reportConfigs.ExtentTestListener"></listener>-->
     </listeners>
     <parameter name="userUrl" value="http://localhost/"></parameter>
     <parameter name="adminUrl" value="http://localhost/admin"></parameter>
     <test name="Run on Firefox Browser">
         <parameter name="browser" value="firefox"></parameter>
         <classes>
-            <class name="com.nopcommerce.user.Level_15_ExtentReport"/>
+            <class name="com.nopcommerce.user.Level_17_JIRA"/>
 <!--            <class name="com.nopcommerce.user.Level_06_Page_Generator_04_demo"/>-->
         </classes>
     </test> <!-- Test -->
