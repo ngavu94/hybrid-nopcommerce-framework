@@ -14,6 +14,7 @@ public class EmployeeTabs extends BasePage {
     public PersonalDetailPO openPersonalDetailPage(){
         waitForElementClickable(driver, EmployeeTabsPageUI.PERSONAL_DETAIL_LINK);
         clickToElement(driver, EmployeeTabsPageUI.PERSONAL_DETAIL_LINK);
+        waitAllLoadingIconInvisible(driver);
         return PageGenerator.getPersonalDetailPage(driver);
     }
     public ContactDetailPO openContactDetailPage(){

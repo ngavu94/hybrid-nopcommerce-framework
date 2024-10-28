@@ -6,8 +6,8 @@
         <listener class-name="commons.MethodListener"></listener>
     </listeners>
     <parameter name="url" value="http://localhost:90/orangehrm/orangehrm-5.7/web/index.php/auth/login"></parameter>
-    <test name="Run on Firefox Browser">
-        <parameter name="browser" value="firefox"></parameter>
+    <test name="Run on Chrome Browser">
+        <parameter name="browser" value="edge"></parameter>
         <classes>
             <class name="com.orangehrm.pim.PIM_01_Employee"/>
         </classes>

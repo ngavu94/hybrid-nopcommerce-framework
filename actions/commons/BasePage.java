@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pageUIs.nopCommerce.BasePageUI;
+import pageUIs.orangeHRM.pim.employee.PersonalDetailPageUI;
 
 import javax.swing.*;
 import java.time.Duration;
@@ -178,7 +179,14 @@ public class BasePage {
 
     public void senkeysToElement(WebDriver driver, String locator, String textInput) {
         //Nếu 1 element là thẻ input bị ẩn thì clear sẽ bị lỗi trên firefox
-        getElement(driver, locator).clear();
+        //getElement(driver, locator).clear();
+        Keys key = null;
+        if(GlobalConstants.OS_NAME.startsWith("Window")){
+            key = Keys.CONTROL;
+        }else {
+            key = Keys.COMMAND;
+        }
+        getElement(driver, locator).sendKeys(Keys.chord(key,"a",Keys.BACK_SPACE));
         getElement(driver, locator).sendKeys(textInput);
     }
     public void senkeysToElement(WebDriver driver, String locator, String textInput, String... restParameter) {
@@ -205,9 +213,9 @@ public class BasePage {
     }
 
     public void selectItemInCustomDropdown(WebDriver driver, String parentLocator, String childItemLocator, String expectedItem) {
-        driver.findElement(By.xpath(parentLocator)).click();
+        driver.findElement(getByLocator(parentLocator)).click();
         List<WebElement> allItems = new WebDriverWait(driver, Duration.ofSeconds(15))
-                .until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(childItemLocator)));
+                .until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByLocator(childItemLocator)));
         for (WebElement item : allItems) {
             if (item.getText().trim().equals(expectedItem)) {
                 item.click();
@@ -430,5 +438,10 @@ public class BasePage {
     public boolean waitAllLoadingIconInvisible(WebDriver driver) {
         return waitForListElementVisible(driver, BasePageUI.LOADING_ICONS);
 
+    }
+    public boolean isSuccessMessageDisplayed(WebDriver driver) {
+        waitForElementVisible(driver, BasePageUI.SUCCESS_MESSAGE);
+       System.out.println("qua step verify message");
+        return isElementDisplayed(driver, BasePageUI.SUCCESS_MESSAGE);
     }
 }

@@ -6,6 +6,7 @@ public class ContactDetailPO extends EmployeeTabs{
     WebDriver driver;
 
     public ContactDetailPO(WebDriver driver) {
+        super(driver);
         this.driver = driver;
     }
 }

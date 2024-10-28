@@ -8,6 +8,7 @@ public class BasePageUI {
 
     //OrangeHRM
     public static final String LOADING_ICONS="css=div.oxd-loading-spinner";
+    public static final String SUCCESS_MESSAGE="xpath=//div[@id='oxd-toaster_1']//p[text()='Successfully Updated']";
 
 
 }
