@@ -34,4 +34,8 @@ public class PageGenerator {
         return new AdminDashboardPO(driver);
     }
 
+    public static SearchPO getSearchPage(WebDriver driver){
+        return new SearchPO(driver);
+    }
+
 }
